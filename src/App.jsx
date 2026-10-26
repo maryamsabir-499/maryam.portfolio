@@ -16,8 +16,7 @@ function App() {
           <a href="#about" className="hover:text-gray-400">About</a>
           <a href="#contact" className="hover:text-gray-400">Contact</a>
         </div>
-        <a href="#" className="hidden md:block bg-white text-black px-5 py-2 rounded-full text-sm">Download CV</a>
-
+       <a href="#" onClick={() => alert('CV will be uploaded soon! Please contact via Hire Me')} ...
         {/* Mobile Menu Button */}
         <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
       </nav>
