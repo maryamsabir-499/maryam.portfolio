@@ -1,61 +1,103 @@
+import { useState } from 'react';
+
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="bg-black text-white min-h-screen font-sans">
+    <div className="bg-black text-white min-h-screen font-sans scroll-smooth">
       {/* Navbar */}
-      <nav className="flex justify-between items-center p-6 max-w-6xl mx-auto">
+      <nav className="flex justify-between items-center p-6 md:px-20 fixed w-full top-0 bg-black/90 backdrop-blur z-50">
         <h1 className="text-2xl font-bold">Maryam.</h1>
-        <a href="/cv.pdf" download="Maryam-CV.pdf" className="bg-white text-black px-5 py-2 rounded-full text-sm font-semibold">
-          Download CV
-        </a>
+        
+        {/* Desktop Menu */}
+        <div className="hidden md:flex gap-8">
+          <a href="#home" className="hover:text-gray-400">Home</a>
+          <a href="#services" className="hover:text-gray-400">Services</a>
+          <a href="#about" className="hover:text-gray-400">About</a>
+          <a href="#contact" className="hover:text-gray-400">Contact</a>
+        </div>
+        <a href="#" className="hidden md:block bg-white text-black px-5 py-2 rounded-full text-sm">Download CV</a>
+
+        {/* Mobile Menu Button */}
+        <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
       </nav>
 
-      {/* Hero */}
-      <div className="max-w-6xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-          I build modern <span className="text-zinc-500">websites</span> <br /> with React & Tailwind.
+      {menuOpen && (
+        <div className="md:hidden fixed top-20 w-full bg-zinc-900 p-6 flex flex-col gap-4 z-40">
+          <a href="#home" onClick={()=>setMenuOpen(false)}>Home</a>
+          <a href="#services" onClick={()=>setMenuOpen(false)}>Services</a>
+          <a href="#about" onClick={()=>setMenuOpen(false)}>About</a>
+          <a href="#contact" onClick={()=>setMenuOpen(false)}>Contact</a>
+        </div>
+      )}
+
+      {/* Home Section */}
+      <section id="home" className="min-h-screen flex flex-col justify-center px-6 md:px-20 pt-20">
+        <h1 className="text-5xl md:text-8xl font-bold leading-tight">
+          I build <span className="text-zinc-500">modern websites</span><br/> with React & Tailwind.
         </h1>
         <p className="text-zinc-400 mt-6 text-lg">Frontend Developer from Pakistan.</p>
-        <div className="mt-8 flex justify-center gap-4">
-          <a href="#cv-section" className="bg-white text-black px-8 py-3 rounded-full font-bold">View My CV</a>
-          <a href="/cv.pdf" download className="border border-zinc-700 px-8 py-3 rounded-full">Download CV</a>
+        <div className="mt-8 flex gap-4">
+          <a href="#contact" className="bg-white text-black px-8 py-3 rounded-full">Hire Me</a>
+          <a href="#services" className="border border-white px-8 py-3 rounded-full">My Services</a>
         </div>
-      </div>
+      </section>
 
-      {/* CV Section - NAYA SECTION */}
-      <div id="cv-section" className="max-w-4xl mx-auto px-6 py-16">
-        <div className="bg-zinc-900 rounded-3xl p-8 md:p-10 border border-zinc-800">
-          <h2 className="text-3xl font-bold mb-8">My CV</h2>
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-xl font-bold text-white">Maryam tajammal</h3>
-              <p className="text-zinc-400">Frontend Developer | React Developer</p>
-              <p className="text-zinc-500 text-sm mt-2">Lahore, Pakistan | maryamsabir499@gmail.com | 0308-4149230</p>
-            </div>
-            <div>
-              <h4 className="font-bold text-white border-b border-zinc-800 pb-2 mb-3">Education</h4>
-              <p className="text-zinc-300">B.A  - punjab University (2014-2015)</p>
-            </div>
-            <div>
-              <h4 className="font-bold text-white border-b border-zinc-800 pb-2 mb-3">Skills</h4>
-              <p className="text-zinc-300">React, Vite, Tailwind CSS, JavaScript, WordPress, HTML/CSS</p>
-            </div>
-            <div>
-              <h4 className="font-bold text-white border-b border-zinc-800 pb-2 mb-3">Experience / Projects</h4>
-              <p className="text-zinc-300">• Labelsaymine - E-commerce Website</p>
-              <p className="text-zinc-300">• Portfolio Website with React</p>
-            </div>
-            <div className="pt-6 flex gap-4">
-              <a href="/cv.pdf" download className="bg-white text-black px-6 py-3 rounded-full font-bold text-sm">Download PDF</a>
-              <a href="https://wa.me/923084149230" className="bg-green-600 text-white px-6 py-3 rounded-full font-bold text-sm">WhatsApp Me</a>
-            </div>
+      {/* Services Section */}
+      <section id="services" className="py-20 px-6 md:px-20 bg-zinc-900">
+        <h2 className="text-4xl font-bold mb-10">Services</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-black p-8 rounded-2xl border border-zinc-800">
+            <h3 className="text-xl font-bold">Web Development</h3>
+            <p className="text-zinc-400 mt-3">Modern, fast and responsive websites with React.</p>
+          </div>
+          <div className="bg-black p-8 rounded-2xl border border-zinc-800">
+            <h3 className="text-xl font-bold">UI / UX Design</h3>
+            <p className="text-zinc-400 mt-3">Clean and user-friendly designs with Tailwind CSS.</p>
+          </div>
+          <div className="bg-black p-8 rounded-2xl border border-zinc-800">
+            <h3 className="text-xl font-bold">Portfolio Websites</h3>
+            <p className="text-zinc-400 mt-3">Professional portfolio for students & freelancers.</p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <footer className="text-center py-10 text-zinc-600 text-sm">
-        Made by Maryam - 2025
+      {/* About Section */}
+      <section id="about" className="py-20 px-6 md:px-20">
+        <h2 className="text-4xl font-bold mb-6">About Me</h2>
+        <p className="text-zinc-400 max-w-3xl text-lg leading-relaxed">
+          Hi, I'm Maryam! I'm a passionate Frontend Developer from Pakistan. I love building beautiful and modern websites using React and Tailwind CSS. My goal is to help businesses and students get a professional online presence.
+        </p>
+        <div className="mt-8 flex gap-10">
+          <div><h4 className="text-3xl font-bold">10+</h4><p className="text-zinc-500">Projects</p></div>
+          <div><h4 className="text-3xl font-bold">100%</h4><p className="text-zinc-500">Client Satisfaction</p></div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6 md:px-20 bg-zinc-900">
+        <h2 className="text-4xl font-bold mb-10">Contact Me</h2>
+        <div className="grid md:grid-cols-2 gap-10">
+          <div>
+            <p className="text-zinc-400 mb-4">Let's work together! Contact me for your next project.</p>
+            <p className="mt-6">📧 maryam.dev@gmail.com</p>
+            <p>📍 Lahore, Pakistan</p>
+            <a href="https://wa.me/923000000000" className="inline-block mt-6 bg-green-500 text-white px-8 py-3 rounded-full">WhatsApp Me</a>
+          </div>
+          <form className="flex flex-col gap-4">
+            <input placeholder="Your Name" className="bg-black border border-zinc-800 p-3 rounded-lg" />
+            <input placeholder="Your Email" className="bg-black border border-zinc-800 p-3 rounded-lg" />
+            <textarea placeholder="Your Message" rows="4" className="bg-black border border-zinc-800 p-3 rounded-lg"></textarea>
+            <button className="bg-white text-black py-3 rounded-full font-bold">Send Message</button>
+          </form>
+        </div>
+      </section>
+
+      <footer className="text-center py-6 text-zinc-600 text-sm border-t border-zinc-900">
+        © 2026 Maryam. All Rights Reserved.
       </footer>
     </div>
-  )
+  );
 }
-export default App
+
+export default App;
