@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maryam-portfolio-chi-two.vercel.app/sitemap.xml
