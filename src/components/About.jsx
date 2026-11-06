@@ -3,7 +3,7 @@ function About() {
     <section id="about" className="py-20 px-6 md:px-20">
       <h2 className="text-4xl font-bold mb-6">About Me</h2>
       <p className="text-zinc-400 max-w-3xl text-lg leading-relaxed">
-        hi, i,m maryam tajammal.I am a python developer i bulid website 
+        Hi, I'm Maryam Tajammal, a Web Developer from Lahore, Pakistan. I love building beautiful, modern and responsive websites using React and Tailwind CSS.
       </p>
       <div className="mt-8 flex gap-10">
         <div>
